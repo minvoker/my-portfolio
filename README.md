@@ -1,2 +1,3 @@
 # my-portfolio
-Built using React JS and Tailwind CSS
+Built using React JS and Tailwind CSS.
+Work in progress...
