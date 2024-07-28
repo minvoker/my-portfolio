@@ -43,7 +43,7 @@ const ProjectPage = ({ projects, theme }) => {
 
         <div className="flex flex-wrap gap-2 mb-8">
           {project.technologies.map((tech) => (
-            <span key={tech} className="px-3 py-1 text-sm rounded-full" style={{ backgroundColor: theme.buttonBg, color: theme.text }}>
+            <span key={tech} className="px-3 py-1 text-s rounded-full" style={{ backgroundColor: theme.buttonBg, color: theme.text }}>
               {tech}
             </span>
           ))}
