@@ -8,9 +8,9 @@ const Hero = ({ theme, gitLink, linkedinLink, emailLink }) => {
   return (
     <section className="min-h-screen flex flex-col justify-between relative w-full" style={{ backgroundColor: theme.bg }}>
       <div className="flex-grow flex items-center justify-center relative z-10 w-full">
-        <div className="max-w-6xl w-full mx-auto px-4 py-16">
+        <div className="max-w-6xl mx-auto px-4 ">
           <div className="flex flex-col lg:flex-row items-center justify-between">
-            <div className="lg:w-2/3 mb-12 lg:mb-0 space-y-10">
+            <div className="lg:w-2/3 space-y-10">
               <h1 className="text-4xl md:text-6xl font-bold" style={{ color: theme.heading }}>Max Harrison</h1>
               <p className="text-xl md:text-2xl" style={{ color: theme.accent }}>Software Developer</p>
               <p className="text-lg md:text-xl" style={{ color: theme.text }}>
@@ -48,13 +48,13 @@ const Hero = ({ theme, gitLink, linkedinLink, emailLink }) => {
                 <span className="text-7xl md:text-9xl" role="img" aria-label="Laptop">💻</span>
               </div>
               <div className="flex space-x-8">
-                <a href={gitLink} target="_blank" rel="noopener noreferrer" style={{ color: theme.link }}>
+                <a href={gitLink} target="_blank" rel="noopener noreferrer" style={{ color: theme.heading }}>
                   <Github size={32} />
                 </a>
-                <a href={linkedinLink} target="_blank" rel="noopener noreferrer" style={{ color: theme.link }}>
+                <a href={linkedinLink} target="_blank" rel="noopener noreferrer" style={{ color: theme.heading }}>
                   <Linkedin size={32} />
                 </a>
-                <a href={emailLink} style={{ color: theme.link }}>
+                <a href={emailLink} style={{ color: theme.heading }}>
                   <Mail size={32} />
                 </a>
               </div>
