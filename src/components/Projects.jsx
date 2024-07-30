@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 
+/*
+ Projects Component and Data
+ - Exports an array of project data containing detailed information about each project.
+ - Defines and exports a Projects component that renders a grid of all projects.
+ */
+
 export const projects = [
   {
     title: "Portfolio",

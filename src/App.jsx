@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { Sun, Moon, Mail, Linkedin, Calendar } from 'lucide-react';
+import { Mail, Linkedin, Calendar } from 'lucide-react';
+import ScrollTop from './components/ScrollTop';
 import Hero from './components/Hero';
 import Projects, { projects } from './components/Projects';
 import Experience from './components/Experience';
 import ProjectPage from './components/ProjectPage';
 
-import { PythonIcon, JavaScriptIcon, ReactIcon, AWSIcon, GitIcon, GithubIcon, CppIcon, NodejsIcon, SQLIcon, TailwindIcon, AgileIcon, 
-  HTMLIcon, CSSIcon } from './assets/icons';
+import { 
+  PythonIcon, JavaScriptIcon, ReactIcon, AWSIcon, GitIcon, GithubIcon, CppIcon, 
+  NodejsIcon, SQLIcon, TailwindIcon, AgileIcon, HTMLIcon, CSSIcon 
+} from './assets/icons';
 
-// TODO: Clean up code and add comments for future, XL screen view
-// To be re-added when I decide light theme colours
-const ThemeToggle = ({ isDark, toggleTheme }) => (
-  <button
-    onClick={toggleTheme}
-    className="p-2 rounded-md transition-colors duration-200"
-    style={{ backgroundColor: isDark ? '#2d2d30' : '#ffffff' }}
-  >
-    {isDark ? <Sun size={20} color="#d4d4d4" /> : <Moon size={20} color="#000000" />}
-  </button>
-);
-
+// Individual skill icons
 const SkillIcon = ({ name, icon, theme }) => (
   <div className="flex flex-col items-center">
     <div className="w-12 h-12 flex items-center justify-center mb-2">
@@ -30,27 +22,36 @@ const SkillIcon = ({ name, icon, theme }) => (
   </div>
 );
 
+/*
+ App Component
+ - Main component that sets up the routing and overall structure of the application.
+ - Defines theme, skills, experiences.
+ - Renders the navigation, main content routes, and footer.
+ */
+
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // State for managing dark mode (currently always true)
+  const [isDarkMode] = useState(true);
 
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
-
+  // External links
   const gitLink = "https://github.com/minvoker";
   const linkedinLink = "https://linkedin.com/in/harrison-max";
   const emailLink = "mailto:maxharro20@gmail.com";
 
+  // Theme config
   const theme = {
-    bg: isDarkMode ? '#1e1e1e' : '#ffffff',
-    secondaryBg: isDarkMode ? '#252526' : '#f3f3f3',
-    text: isDarkMode ? '#d4d4d4' : '#000000',
-    heading: isDarkMode ? '#569cd6' : '#0000ff',
-    link: isDarkMode ? '#9cdcfe' : '#0000ff',
-    accent: isDarkMode ? '#4ec9b0' : '#267f99',
-    comment: isDarkMode ? '#608b4e' : '#008000',
-    buttonBg: isDarkMode ? '#2d2d30' : '#e1e1e1',
-    buttonHoverBg: isDarkMode ? '#3e3e42' : '#d1d1d1',
+    bg: '#1e1e1e',
+    secondaryBg: '#252526',
+    text: '#d4d4d4',
+    heading: '#569cd6',
+    link: '#9cdcfe',
+    accent: '#4ec9b0',
+    comment: '#608b4e',
+    buttonBg: '#2d2d30',
+    buttonHoverBg: '#3e3e42',
   };
 
+  // Experience data
   const experiences = [
     {
       title: "Cloud/Network Engineer",
@@ -85,6 +86,7 @@ const App = () => {
     },
   ];
 
+  // Skills data
   const skills = [
     { name: "Python", icon: PythonIcon },
     { name: "JavaScript", icon: JavaScriptIcon },
@@ -101,10 +103,11 @@ const App = () => {
     { name: "Agile", icon: AgileIcon },
   ];
 
-  const featuredProjects = projects.slice(0, 4); // Get first 4 projects
+  const featuredProjects = projects.slice(0, 4); // Get first 4 projects for featured section
 
   return (
     <Router>
+      <ScrollTop></ScrollTop>
       <div style={{ backgroundColor: theme.bg, color: theme.text }} className="min-h-screen font-sans">
         {/* Navigation */}
         <nav style={{ backgroundColor: theme.secondaryBg }} className="p-4 sticky top-0 z-50">
@@ -113,11 +116,6 @@ const App = () => {
             <div className="flex items-center space-x-6 text-sm">
               <Link to="/" style={{ color: theme.heading }} className="hover:underline transition duration-300">HOME</Link>
               <Link to="/projects" style={{ color: theme.heading }} className="hover:underline transition duration-300">PROJECTS</Link>
-              <a href="/#contact" style={{ color: theme.heading }} className="hover:underline transition duration-300">CONTACT</a>
-              {/* Remove for now
-              <ThemeToggle isDark={isDarkMode} toggleTheme={toggleTheme} />
-              */}
-
             </div>
           </div>
         </nav>
@@ -189,6 +187,7 @@ const App = () => {
                   <h2 className="text-3xl font-bold mb-8 text-center" style={{ color: theme.heading }}>Contact Me</h2>
                   <p className="text-center mb-6 text-lg" style={{ color: theme.text }}>I'm always open to new opportunities. Just reach out</p>
                   <div className="flex justify-center space-x-4">
+                    {/* Email Button */}
                     <a 
                       href={emailLink} 
                       className="px-6 py-3 rounded-md text-lg transition-colors duration-300 flex items-center hover:shadow-lg"
@@ -201,6 +200,7 @@ const App = () => {
                     >
                       <Mail className="mr-2" /> Email Me
                     </a>
+                    {/* LinkedIn Button */}
                     <a 
                       href={linkedinLink} 
                       target="_blank" 
@@ -220,7 +220,7 @@ const App = () => {
               </main>
             </>
           } />
-          {/* Routing */}
+          {/* Routes for Projects and individual Project pages */}
           <Route path="/projects" element={<Projects projects={projects} theme={theme} />} />
           <Route path="/project/:title" element={<ProjectPage projects={projects} theme={theme} />} />
         </Routes>
@@ -232,8 +232,7 @@ const App = () => {
               <div className="text-2xl font-bold mb-4 md:mb-0" style={{ color: theme.heading }}>Max Harrison</div>
               <div className="flex space-x-6">
                 <Link to="/" style={{ color: theme.heading }} className="hover:underline transition duration-300">Home</Link>
-                <Link to="/#projects" style={{ color: theme.heading }} className="hover:underline transition duration-300">Projects</Link>
-                <Link to="/#contact" style={{ color: theme.heading }} className="hover:underline transition duration-300">Contact</Link>
+                <Link to="/projects" style={{ color: theme.heading }} className="hover:underline transition duration-300">Projects</Link>
               </div>
             </div>
             <div className="mt-8 text-center text-sm" style={{ color: theme.text }}>
