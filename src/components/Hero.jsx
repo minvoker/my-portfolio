@@ -40,21 +40,12 @@ const Hero = ({ theme, gitLink, linkedinLink, emailLink }) => {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
                 <button 
                   onClick={() => navigate("/projects")}
-                  className="px-6 py-3 rounded-md text-lg transition-colors duration-300"
+                  className="px-8 py-3 rounded-md text-lg transition-colors duration-300"
                   style={buttonStyle}
                   onMouseEnter={(e) => e.target.style.backgroundColor = theme.buttonHoverBg}
                   onMouseLeave={(e) => e.target.style.backgroundColor = theme.buttonBg}
                 >
                   View Projects
-                </button>
-                <button 
-                  onClick={() => console.log('Download Resume')} 
-                  className="px-6 py-3 rounded-md text-lg transition-colors duration-300"
-                  style={buttonStyle}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = theme.buttonHoverBg}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = theme.buttonBg}
-                >
-                  Download Resume
                 </button>
               </div>
             </div>
