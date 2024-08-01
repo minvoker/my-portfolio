@@ -1,3 +1,2 @@
 # my-portfolio
-Built using React JS and Tailwind CSS.
-Work in progress...
+Built using React JS and Tailwind CSS. Hosted on Azure.

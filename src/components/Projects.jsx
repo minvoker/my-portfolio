@@ -20,7 +20,9 @@ export const projects = [
     
       "For the design, I went with Tailwind CSS. It made creating a responsive layout pretty straightforward. The utility-first approach was new to me, so it took some getting used to. But once I got the hang of it, putting together the UI went faster than I expected. The colours chosen were inspired by the vscode dark theme.",
     
-      "I also brought in some external libraries, like Lucide for the icons. To keep the site running smoothly, I looked into performance optimization stuff like lazy loading and code splitting. While I decided to keep it simple, this still was interesting to research and I will implement more in the future."
+      "I also brought in some external libraries, like Lucide for the icons. To keep the site running smoothly, I looked into performance optimization stuff like lazy loading and code splitting. While I decided to keep it simple, this still was interesting to research and I will implement more in the future.",
+
+      "Hosted on Azure."
     ],
     image: "/images/portfolio.jpg"
   },
